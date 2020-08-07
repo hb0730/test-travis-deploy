@@ -1,7 +1,7 @@
 #!/bin/bash
 echo $TRAVIS_TAG
 
-if [ "$TRAVIS_TAG"="" ]; then
+if [ !$TRAVIS_TAG ]; then
   echo "tag is null"
 else
   echo "Publishing Maven snapshot..."
