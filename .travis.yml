@@ -20,15 +20,12 @@ stages:
     if: tag =~ /^v\d+\.\d+(\.\d+)?(-\S*)?$/
 jobs:
   include:
-    - stage: build
-      name: "maven build"
-      script: mvn clean test
     - stage: release
       name: "maven install release"
       script: echo "Deploying to GitHub releases ..." && pwd
       deploy:
         provider: releases
-        api_token: $GITHUB_OAUTH_TOKEN
+        api_key: $GITHUB_OAUTH_TOKEN
         on:
           tags: true
 after_deploy:
