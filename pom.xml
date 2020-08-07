@@ -16,7 +16,7 @@
     <properties>
         <project.build.sourceEncoding>utf-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>utf-8</project.reporting.outputEncoding>
-        <compile.version>11</compile.version>
+        <compile.version>8</compile.version>
     </properties>
 
     <licenses>
