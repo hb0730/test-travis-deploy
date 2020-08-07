@@ -1,0 +1,31 @@
+language: java
+jdk:
+  - openjdk8
+before_install:
+  - export TZ=Asia/Shanghai
+cache:
+  directories:
+    - $HOME/.m2/repository
+after_success:
+  - bash <(curl -s https://codecov.io/bash)
+notifications:
+  email: false
+branches:
+  only:
+    - master
+    - /^v\d+\.\d+(\.\d+)?(-\S*)?$/
+stages:
+  - build
+  - name: release
+    if: tag =~ /^v\d+\.\d+(\.\d+)?(-\S*)?$/
+jobs:
+  include:
+    - stage: release
+      name: "maven install release"
+      script: echo "Deploying to GitHub releases ..." && pwd
+      deploy:
+        provider: releases
+        api_token: $GITHUB_OAUTH_TOKEN
+        on:
+          tags: true
+        script: bin/deploy.sh
