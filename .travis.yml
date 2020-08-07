@@ -31,4 +31,5 @@ jobs:
         api_token: $GITHUB_OAUTH_TOKEN
         on:
           tags: true
-        script: bin/deploy.sh
+after_deploy:
+  - bin/deploy.sh
