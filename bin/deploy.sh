@@ -7,5 +7,5 @@ else
   echo "Publishing Maven snapshot..."
   openssl aes-256-cbc -K $encrypted_c7d28ed8a9a3_key -iv $encrypted_c7d28ed8a9a3_iv -in bin/codesigning.gpg.enc -out bin/codesigning.gpg -d
   gpg --import bin/codesigning.gpg
-  mvn clean deploy --settings=bin/settings.xml -DskipTests=true
+  mvn clean deploy --settings=bin/settings.xml -DskipTests=true -P sonatype-nexus-snapshots
 fi
